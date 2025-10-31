@@ -16,7 +16,7 @@ const Header = () => {
   const handleLinkClick = () => setIsMobileMenuOpen(false);
 
   return (
-    <header className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white shadow-md sticky top-0 z-50">
+    <header className="bg-linear-to-r from-gray-900 via-gray-800 to-gray-900 text-white shadow-md sticky top-0 z-50">
       <nav className="container mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between">
         
         {/* Logo */}
@@ -60,7 +60,6 @@ const Header = () => {
             ))}
           </ul>
 
-          {/* Right Section */}
           <div className="flex flex-col lg:flex-row lg:items-center mt-4 lg:mt-0 lg:ml-6 space-y-3 lg:space-y-0 lg:space-x-4">
             
             {/* Cart Button */}
@@ -73,9 +72,9 @@ const Header = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
               Cart
-              {/* Example cart badge */}
+            
               <span className="absolute -top-2 -right-3 bg-blue-500 text-xs text-white px-1.5 py-0.5 rounded-full">
-                3
+                1
               </span>
             </Link>
 

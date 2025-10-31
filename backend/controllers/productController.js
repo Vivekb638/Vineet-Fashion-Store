@@ -1,7 +1,7 @@
 import Product from "../models/Product.js";
 import { cloudinary } from "../config/cloudinary.js"; // Import cloudinary
 
-// 🟢 Create a Product
+//  Create a Product
 export const createProduct = async (req, res, next) => { // Added 'next'
   try {
     const { name, description, price, category, stock } = req.body;
@@ -28,13 +28,12 @@ export const createProduct = async (req, res, next) => { // Added 'next'
     res.status(201).json(savedProduct);
   } catch (error) {
     console.error("DETAILED ERROR in createProduct:", error);
-    // Pass the error to the global error handler
     next(error); 
   }
 };
 
-// 🔵 Get All Products
-export const getProducts = async (req, res, next) => { // Added 'next'
+//  Get All Products
+export const getProducts = async (req, res, next) => {
   try {
     const products = await Product.find();
     res.json(products);
@@ -44,8 +43,8 @@ export const getProducts = async (req, res, next) => { // Added 'next'
   }
 };
 
-// 🟣 Get Single Product by ID
-export const getProductById = async (req, res, next) => { // Added 'next'
+//  Get Single Product by ID
+export const getProductById = async (req, res, next) => { 
   try {
     const product = await Product.findById(req.params.id);
     if (product) {
@@ -59,9 +58,8 @@ export const getProductById = async (req, res, next) => { // Added 'next'
   }
 };
 
-// 🟠 Update Product
-export const updateProduct = async (req, res, next) => { // Added 'next'
-  // This is a basic update. A full update would also handle image replacement.
+//  Update Product
+export const updateProduct = async (req, res, next) => { 
   try {
     const updatedProduct = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(updatedProduct);
@@ -71,8 +69,8 @@ export const updateProduct = async (req, res, next) => { // Added 'next'
   }
 };
 
-// 🔴 Delete Product
-export const deleteProduct = async (req, res, next) => { // Added 'next'
+//  Delete Product
+export const deleteProduct = async (req, res, next) => { 
   try {
     const product = await Product.findById(req.params.id);
     if (!product) {

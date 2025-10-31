@@ -26,13 +26,11 @@ export const AuthProvider = ({ children }) => {
     const fetchUserProfile = async () => {
       if (token) {
         try {
-          // You already built this route: /api/auth/profile
           const { data } = await axios.get(`${API_URL}/auth/profile`);
           setUser(data);
         } catch (error) {
-          // Token might be invalid or expired
           console.error('Failed to fetch user profile', error);
-          setToken(null); // Clear invalid token
+          setToken(null); 
           localStorage.removeItem('token');
         }
       }
@@ -63,7 +61,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setToken(null);
     setUser(null);
-    showToast('Logged out.', 'info'); // 5. Show toast
+    showToast('Logged out.', 'info');
   };
 
   // Login wrapper function with toast error handling
@@ -73,18 +71,17 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       const message = err.response?.data?.message || 'Login failed. Please try again.';
       showToast(message, 'error');
-      throw err; // Re-throw error so component knows it failed
+      throw err; 
     }
   };
 
-  // Register wrapper function with toast error handling
   const registerWithToast = async (name, email, password) => {
     try {
       await register(name, email, password);
     } catch (err) {
       const message = err.response?.data?.message || 'Registration failed. Please try again.';
       showToast(message, 'error');
-      throw err; // Re-throw error
+      throw err; 
     }
   };
 
@@ -93,9 +90,8 @@ export const AuthProvider = ({ children }) => {
       value={{ 
         user, 
         token, 
-        login: loginWithToast, // Use the new wrapped functions
-        register: registerWithToast, // Use the new wrapped functions
-        logout, 
+        login: loginWithToast, 
+        register: registerWithToast, 
         loading 
       }}
     >

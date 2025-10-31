@@ -7,7 +7,7 @@ export const ToastProvider = ({ children }) => {
 
   const showToast = useCallback((message, type = 'success') => {
     setToast({ message, type });
-    // Auto-hide after 3 seconds
+
     setTimeout(() => {
       setToast(null);
     }, 3000);

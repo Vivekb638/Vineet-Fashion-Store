@@ -50,8 +50,8 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ['user', 'admin'], // Role can only be 'user' or 'admin'
-      default: 'user', // All new users are 'user' by default
+      enum: ['user', 'admin'], 
+      default: 'user', 
     },
   },
   { timestamps: true }

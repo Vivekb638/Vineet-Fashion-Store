@@ -1,55 +1,14 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-
-// const Footer = () => {
-//   return (
-//     <footer className="bg-gray-800 text-gray-300 mt-12">
-//       <div className="container mx-auto px-4 sm:px-6 py-8">
-//         <div className="flex flex-col md:flex-row justify-between items-center">
-          
-//           {/* Logo and Copyright */}
-//           <div className="mb-4 md:mb-0">
-//             <h2 className="text-xl font-bold text-white">Vineet Fashion Store</h2>
-//             <p className="text-sm mt-2">© {new Date().getFullYear()} All Rights Reserved.</p>
-//           </div>
-
-//           {/* Navigation Links */}
-//           <div className="flex space-x-6">
-//             <Link to="/" className="text-gray-300 hover:text-white text-sm">
-//               Home
-//             </Link>
-//             <Link to="/products" className="text-gray-300 hover:text-white text-sm">
-//               Products
-//             </Link>
-//             <Link to="/cart" className="text-gray-300 hover:text-white text-sm">
-//               Cart
-//             </Link>
-//             <Link to="/login" className="text-gray-300 hover:text-white text-sm">
-//               Login
-//             </Link>
-//           </div>
-          
-//         </div>
-//       </div>
-//     </footer>
-//   );
-// };
-
-// export default Footer;
-
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaTwitter, FaGithub } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-gray-300 mt-16">
+    <footer className="bg-linear-to-r from-gray-900 via-gray-800 to-gray-900 text-gray-300 mt-16">
       <div className="container mx-auto px-6 py-10">
-        {/* Top Section */}
+        
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left space-y-8 md:space-y-0">
-          
-          {/* Brand Info */}
+
           <div>
             <h2 className="text-2xl font-bold text-white">Vineet Fashion Store</h2>
             <p className="text-sm mt-2 text-gray-400 max-w-xs">

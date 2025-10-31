@@ -2,15 +2,13 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
-// 1. Import useToast to show feedback
-import { useToast } from '../context/ToastContext.jsx'; 
 
-// 2. Add onProductDeleted as a new prop
+
+//  Add onProductDeleted as a new prop
 const ProductCard = ({ product, onProductDeleted }) => {
   const { addToCart } = useCart();
   const { user } = useAuth();
   const navigate = useNavigate();
-  const { showToast } = useToast(); // 3. Get the toast function
 
   const formattedPrice = new Intl.NumberFormat('en-IN', {
     style: 'currency',
@@ -22,14 +20,13 @@ const ProductCard = ({ product, onProductDeleted }) => {
       navigate('/login');
     } else {
       addToCart(product._id, 1);
-      // We already have a toast system, so let's use it!
-      // showToast('Added to cart!', 'success'); // This is handled in CartContext now
+
     }
   };
 
   // 4. Create the delete handler
   const handleDelete = (e) => {
-    e.preventDefault(); // Stop it from navigating to product page
+    e.preventDefault(); 
     e.stopPropagation(); // Stop click event bubbling
     if (window.confirm('Are you sure you want to delete this product?')) {
       // Call the function passed from ProductsPage

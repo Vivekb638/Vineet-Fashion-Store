@@ -1,128 +1,3 @@
-// import React, { useState } from 'react';
-// import axios from 'axios';
-// import { useAuth } from '../context/AuthContext';
-// import { useNavigate } from 'react-router-dom';
-
-// const API_URL = import.meta.env.VITE_API_URL;
-
-// const AdminPage = () => {
-//   const [name, setName] = useState('');
-//   const [description, setDescription] = useState('');
-//   const [price, setPrice] = useState('');
-//   const [category, setCategory] = useState('Men');
-//   const [stock, setStock] = useState('10');
-//   const [image, setImage] = useState(null);
-  
-//   const [loading, setLoading] = useState(false);
-//   const [error, setError] = useState(null);
-//   const [success, setSuccess] = useState(null);
-
-//   const { token } = useAuth();
-//   const navigate = useNavigate();
-
-//   const handleImageChange = (e) => {
-//     setImage(e.target.files[0]);
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     setLoading(true);
-//     setError(null);
-//     setSuccess(null);
-
-//     // 1. We must use FormData because we are sending a file
-//     const formData = new FormData();
-//     formData.append('name', name);
-//     formData.append('description', description);
-//     formData.append('price', price);
-//     formData.append('category', category);
-//     formData.append('stock', stock);
-//     formData.append('image', image); // The 'image' key must match multer on the backend
-
-//     try {
-//       // 2. Send the request
-//       const { data } = await axios.post(
-//         `${API_URL}/products`, 
-//         formData, 
-//         {
-//           headers: {
-//             'Authorization': `Bearer ${token}`
-//           }
-//         }
-//       );
-      
-//       setSuccess(`Product "${data.name}" created successfully!`);
-//       // Clear form
-//       setName('');
-//       setDescription('');
-//       setPrice('');
-//       setCategory('Men');
-//       setStock('10');
-//       setImage(null);
-//       e.target.reset(); // Resets the file input
-
-//     } catch (err) {
-//       setError(err.response?.data?.message || 'Failed to create product.');
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-//       <h2 className="text-3xl font-bold text-gray-800 mb-6">Create New Product</h2>
-      
-//       <form onSubmit={handleSubmit} className="space-y-6">
-//         {error && <div className="p-3 bg-red-100 text-red-700 rounded-md">{error}</div>}
-//         {success && <div className="p-3 bg-green-100 text-green-700 rounded-md">{success}</div>}
-        
-//         {/* Form fields... */}
-//         <div>
-//           <label htmlFor="name" className="block text-sm font-medium text-gray-700">Product Name</label>
-//           <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"/>
-//         </div>
-
-//         <div>
-//           <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
-//           <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} required rows="3" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
-//         </div>
-
-//         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-//           <div>
-//             <label htmlFor="price" className="block text-sm font-medium text-gray-700">Price (INR)</label>
-//             <input type="number" id="price" value={price} onChange={(e) => setPrice(e.target.value)} required className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"/>
-//           </div>
-//           <div>
-//             <label htmlFor="stock" className="block text-sm font-medium text-gray-700">Stock</label>
-//             <input type="number" id="stock" value={stock} onChange={(e) => setStock(e.target.value)} required className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"/>
-//           </div>
-//         </div>
-
-//         <div>
-//           <label htmlFor="category" className="block text-sm font-medium text-gray-700">Category</label>
-//           <select id="category" value={category} onChange={(e) => setCategory(e.target.value)} className="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-//             <option>Men</option>
-//             <option>Women</option>
-//             <option>Shoes</option>
-//             <option>Accessories</option>
-//           </select>
-//         </div>
-
-//         <div>
-//           <label className="block text-sm font-medium text-gray-700">Product Image</label>
-//           <input type="file" onChange={handleImageChange} required className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
-//         </div>
-        
-//         <button type="submit" disabled={loading} className="w-full py-3 px-4 bg-blue-600 text-white font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-blue-300">
-//           {loading ? 'Uploading...' : 'Create Product'}
-//         </button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default AdminPage;
-
 import React, { useState } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
@@ -167,7 +42,7 @@ const AdminPage = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      setSuccess(`✅ Product "${data.name}" created successfully!`);
+      setSuccess(`Product "${data.name}" created successfully!`);
       setName("");
       setDescription("");
       setPrice("");
@@ -176,14 +51,14 @@ const AdminPage = () => {
       setImage(null);
       e.target.reset();
     } catch (err) {
-      setError(err.response?.data?.message || "❌ Failed to create product.");
+      setError(err.response?.data?.message || " Failed to create product.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-blue-50 to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-700">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-gray-50 via-blue-50 to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-700">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -324,7 +199,7 @@ const AdminPage = () => {
             whileTap={{ scale: 0.97 }}
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-lg shadow-md hover:from-blue-700 hover:to-indigo-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 transition-all disabled:opacity-60"
+            className="w-full py-3 bg-linear-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-lg shadow-md hover:from-blue-700 hover:to-indigo-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 transition-all disabled:opacity-60"
           >
             {loading ? "Uploading..." : "Create Product"}
           </motion.button>

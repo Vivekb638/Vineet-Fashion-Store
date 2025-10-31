@@ -5,7 +5,6 @@ import confetti from 'canvas-confetti';
 
 const PaymentSuccessPage = () => {
   useEffect(() => {
-    // 🎉 Confetti effect on load
     const duration = 3 * 1000; // 3 seconds
     const end = Date.now() + duration;
 
@@ -29,7 +28,6 @@ const PaymentSuccessPage = () => {
     })();
   }, []);
 
-  // 🧾 Simulated order data (you can fetch this dynamically later)
   const order = {
     id: 'ORD12345678',
     date: new Date().toLocaleDateString(),
