@@ -2,58 +2,57 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
+import multer from "multer";
 import connectDB from "./config/db.js";
-import multer from 'multer'; 
+
+// Import Routes
 import cartRoutes from "./routes/cartRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
+
+// Load environment variables
 dotenv.config();
+
+// Connect to MongoDB
 connectDB();
 
 const app = express();
-app.use(cors());
 
-// Use express.json() and urlencoded for routes that need them.
-// We apply them *before* the routes.
-app.use(express.json()); 
+// Middleware
+app.use(cors());
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-// routes 
+// API Routes
 app.use("/api/cart", cartRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/auth", authRoutes);
-app.use("/api/products", productRoutes); 
+app.use("/api/products", productRoutes);
 
-
+// Test Route
 app.get("/", (req, res) => {
-  res.send("Vineet Fashion Store API is running...");
+  res.send("✅ Vineet Fashion Store Backend is running successfully!");
 });
 
-
+// Global Error Handler
 app.use((err, req, res, next) => {
-  console.error("--- GLOBAL ERROR HANDLER CAUGHT: ---");
-  console.error(err); 
-  
-  // Check for Multer-specific errors
+  console.error("--- GLOBAL ERROR HANDLER CAUGHT ---");
+  console.error(err);
+
   if (err instanceof multer.MulterError) {
     return res.status(400).json({ message: `File upload error: ${err.message}` });
   }
-  
-  // Check for Cloudinary API errors 
+
   if (err.http_code) {
-     return res.status(err.http_code).json({ message: `Cloudinary error: ${err.message}` });
+    return res.status(err.http_code).json({ message: `Cloudinary error: ${err.message}` });
   }
 
-  // Generic error
   res.status(500).json({
     message: "An unknown server error occurred.",
-    error: err.message || 'Unknown error'
+    error: err.message || "Unknown error",
   });
 });
 
-
-const PORT = process.env.PORT || 5000;
+// Export app for Vercel serverless function
 export default app;
-
