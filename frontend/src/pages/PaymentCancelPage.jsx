@@ -10,7 +10,7 @@ const PaymentCancelPage = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
-      {/* ❌ Warning Icon */}
+      {/*  Warning Icon */}
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
