@@ -209,12 +209,7 @@ const CartPage = () => {
     0
   );
 
-  // 3. Show a spinner on the buttons while updating quantity
-  // This is a small but nice UX improvement
-  if (loading && cart) {
-    // This makes sure the page doesn't go blank, but shows loading state
-    // We can add a spinner icon to the quantity buttons if we want
-  }
+ 
 
   if (loading && !cart) {
     return (
