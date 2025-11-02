@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token') || null);
   const [loading, setLoading] = useState(true);
-  const { showToast } = useToast(); // 2. Get the showToast function
+  const { showToast } = useToast(); 
 
   // Set the default auth token for all axios requests
   useEffect(() => {
@@ -104,4 +104,3 @@ export const AuthProvider = ({ children }) => {
 export const useAuth = () => {
   return useContext(AuthContext);
 };
-
