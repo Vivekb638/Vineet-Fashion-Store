@@ -54,5 +54,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Export app for Vercel serverless function
 export default app;
